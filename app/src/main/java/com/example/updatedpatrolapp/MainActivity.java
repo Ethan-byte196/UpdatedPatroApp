@@ -62,7 +62,7 @@ public class MainActivity extends AppCompatActivity {
 
 
 
-    //Scanner function
+    //Scanner function, scan for 10 seconds
     private static final long SCAN_PERIOD = 10000;
     Handler handler = new Handler();
 
@@ -180,7 +180,7 @@ public class MainActivity extends AppCompatActivity {
             // The result will be received in the onReadRemoteRssi callback method
 
             // Schedule the next execution after a delay (adjust as needed)
-            handler.postDelayed(this, 1000);
+            handler.postDelayed(this, 50);
         }
     };
 
@@ -203,10 +203,11 @@ public class MainActivity extends AppCompatActivity {
                 Log.v(TAG, "newState = " + newState);
 
 
+
                 Log.v(TAG, "BluetoothProfile.STATE_CONNECTED = " + BluetoothProfile.STATE_CONNECTED);
 
                 if (newState == BluetoothProfile.STATE_CONNECTED) {
-
+                    mDeviceInfoTv.setText(gatt.getDevice().getName());
 
 
 
@@ -215,7 +216,8 @@ public class MainActivity extends AppCompatActivity {
 
 
 
-                    handler.postDelayed(runnable, 1000);
+
+                    handler.postDelayed(runnable, 0);
 
 
 
