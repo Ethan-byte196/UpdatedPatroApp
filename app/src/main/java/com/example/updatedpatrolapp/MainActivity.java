@@ -50,7 +50,7 @@ public class MainActivity extends AppCompatActivity {
 
     //Declare layout aspects
     TextView mStatusBlueTv, mDeviceInfoTv;
-    Button mOnBtn, mScanBtn, mOffBtn, mConnectBtn, mFineBtn;
+    Button mOnBtn, mScanBtn, mOffBtn, mConnectBtn, mFineBtn, mToControlBtn;
 
     //Codes used for requests
     private static final int REQUEST_ENABLED_BT = 1;
@@ -123,6 +123,8 @@ public class MainActivity extends AppCompatActivity {
 
                         if(result.getDevice().getName().equals("TESTING")){
                             BluetoothDevice device = result.getDevice();
+                            Log.v(TAG, "Found device");
+
                             try {
                                 // connect to the GATT server on the device
                                 bleConnect(device);
@@ -148,7 +150,7 @@ public class MainActivity extends AppCompatActivity {
         bluetoothGatt = device.connectGatt(this, false, bluetoothGattCallback);
     }
 
-
+    //TODO: Fix close()
     private void close() {
         if (bluetoothGatt == null) {
             return;
@@ -157,7 +159,10 @@ public class MainActivity extends AppCompatActivity {
         bluetoothGatt = null;
     }
 
-
+    private void switchActivities() {
+        Intent switchActivityIntent = new Intent(this, ControlActivity.class);
+        startActivity(switchActivityIntent);
+    }
 
 
     //MISC: Used to show alert messages
@@ -194,6 +199,8 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        //Initialize this at the beginning so that the GattCallback will be ran when needed
+        // Will start running when it detects connection change
         bluetoothGattCallback = new BluetoothGattCallback() {
 
             @Override
@@ -264,6 +271,7 @@ public class MainActivity extends AppCompatActivity {
         mFineBtn = findViewById(R.id.fineBtn);
         mStatusBlueTv = findViewById(R.id.statusBluetoothTv);
         mDeviceInfoTv = findViewById(R.id.deviceInfoTv);
+        mToControlBtn = findViewById(R.id.toControlBtn);
 
 
 
@@ -281,7 +289,13 @@ public class MainActivity extends AppCompatActivity {
             }
         }
 
-
+        //Switch activities button
+        mToControlBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                switchActivities();
+            }
+        });
 
 
 
