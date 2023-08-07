@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#FFFFFF">
@@ -8,86 +9,86 @@
 
     <Button
         android:id="@+id/Up_button"
-        android:layout_width="131dp"
-        android:layout_height="173dp"
+        android:layout_width="123dp"
+        android:layout_height="124dp"
         android:background="@drawable/arrow_button"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.303"
+        app:layout_constraintHorizontal_bias="0.299"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.239" />
+        app:layout_constraintVertical_bias="0.125" />
 
     <Button
         android:id="@+id/buttonLeft"
-        android:layout_width="182dp"
-        android:layout_height="136dp"
+        android:layout_width="123dp"
+        android:layout_height="124dp"
         android:background="@drawable/arrow_button"
         android:rotation="-90"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintHorizontal_bias="0.097"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.581" />
+        app:layout_constraintVertical_bias="0.557" />
 
     <Button
         android:id="@+id/buttonRight"
-        android:layout_width="224dp"
-        android:layout_height="131dp"
+        android:layout_width="123dp"
+        android:layout_height="124dp"
         android:background="@drawable/arrow_button"
         android:rotation="90"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.625"
+        app:layout_constraintHorizontal_bias="0.501"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.571" />
+        app:layout_constraintVertical_bias="0.557" />
 
     <Button
         android:id="@+id/buttonRotRight"
-        android:layout_width="133dp"
-        android:layout_height="144dp"
+        android:layout_width="103dp"
+        android:layout_height="122dp"
         android:background="@drawable/arrow_button"
         android:rotation="135"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.523"
+        app:layout_constraintHorizontal_bias="0.557"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.059" />
+        app:layout_constraintVertical_bias="0.055" />
 
     <Button
         android:id="@+id/buttonRotLeft"
-        android:layout_width="135dp"
-        android:layout_height="146dp"
+        android:layout_width="103dp"
+        android:layout_height="122dp"
         android:background="@drawable/arrow_button"
         android:rotation="-135"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.078"
+        app:layout_constraintHorizontal_bias="0.057"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.052" />
+        app:layout_constraintVertical_bias="0.055" />
 
     <Button
         android:id="@+id/buttonDown"
-        android:layout_width="131dp"
-        android:layout_height="165dp"
+        android:layout_width="123dp"
+        android:layout_height="124dp"
         android:background="@drawable/arrow_button"
         android:rotation="180"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.31"
+        app:layout_constraintHorizontal_bias="0.299"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.934" />
+        app:layout_constraintVertical_bias="0.944" />
 
     <Button
         android:id="@+id/buttonBreak"
-        android:layout_width="181dp"
-        android:layout_height="165dp"
-        android:layout_marginStart="548dp"
+        android:layout_width="182dp"
+        android:layout_height="172dp"
+        android:layout_marginStart="532dp"
         android:layout_marginTop="172dp"
         android:background="#FF0000"
         android:gravity="center"
@@ -95,6 +96,16 @@
         android:textColor="#FFFFFF"
         android:textSize="50sp"
         app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/Switch_Back"
+        android:layout_width="126dp"
+        android:layout_height="66dp"
+        android:layout_marginStart="588dp"
+        android:layout_marginTop="36dp"
+        android:text="@string/switch_backs"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 

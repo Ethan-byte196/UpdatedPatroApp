@@ -205,7 +205,7 @@ public class MainActivity extends AppCompatActivity {
 
             @Override
             public void onConnectionStateChange(BluetoothGatt gatt, int status, int newState) {
-                Log.v(TAG, "Connection change occured");
+                Log.v(TAG, "Connection change occurred");
                 Log.v(TAG, "status = " + status);
                 Log.v(TAG, "newState = " + newState);
 
@@ -293,7 +293,8 @@ public class MainActivity extends AppCompatActivity {
         mToControlBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                switchActivities();
+                Intent intent = new Intent(MainActivity.this, ControlActivity.class);
+                startActivity(intent);
             }
         });
 
@@ -381,9 +382,3 @@ public class MainActivity extends AppCompatActivity {
 
 
 }
-
-
-
-
-
-
