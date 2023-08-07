@@ -51,4 +51,5 @@
     <string name="action_settings" />
     <string name="first_fragment_label" />
     <string name="second_fragment_label" />
+    <string name="up">Up</string>
 </resources>
