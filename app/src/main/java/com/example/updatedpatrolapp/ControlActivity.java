@@ -15,7 +15,7 @@ public class ControlActivity extends AppCompatActivity {
         setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE);
         setContentView(R.layout.control_layout);
 
-        Button button_UP = findViewById(R.id.buttonUp);
+        Button button_UP = findViewById(R.id.Up_button);
         button_UP.setOnClickListener(v -> Log.d("BUTTONS", "User tapped the Up button"));
 
         Button button_Right = findViewById(R.id.buttonRight);
