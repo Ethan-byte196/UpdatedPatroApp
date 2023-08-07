@@ -50,7 +50,7 @@ public class MainActivity extends AppCompatActivity {
 
     //Declare layout aspects
     TextView mStatusBlueTv, mDeviceInfoTv;
-    Button mOnBtn, mScanBtn, mOffBtn, mConnectBtn, mFineBtn;
+    Button mOnBtn, mScanBtn, mOffBtn, mConnectBtn, mFineBtn, mToControlBtn;
 
     //Codes used for requests
     private static final int REQUEST_ENABLED_BT = 1;
@@ -62,7 +62,7 @@ public class MainActivity extends AppCompatActivity {
 
 
 
-    //Scanner function
+    //Scanner function, scan for 10 seconds
     private static final long SCAN_PERIOD = 10000;
     Handler handler = new Handler();
 
@@ -123,6 +123,8 @@ public class MainActivity extends AppCompatActivity {
 
                         if(result.getDevice().getName().equals("TESTING")){
                             BluetoothDevice device = result.getDevice();
+                            Log.v(TAG, "Found device");
+
                             try {
                                 // connect to the GATT server on the device
                                 bleConnect(device);
@@ -148,7 +150,7 @@ public class MainActivity extends AppCompatActivity {
         bluetoothGatt = device.connectGatt(this, false, bluetoothGattCallback);
     }
 
-
+    //TODO: Fix close()
     private void close() {
         if (bluetoothGatt == null) {
             return;
@@ -157,7 +159,10 @@ public class MainActivity extends AppCompatActivity {
         bluetoothGatt = null;
     }
 
-
+    private void switchActivities() {
+        Intent switchActivityIntent = new Intent(this, ControlActivity.class);
+        startActivity(switchActivityIntent);
+    }
 
 
     //MISC: Used to show alert messages
@@ -180,7 +185,7 @@ public class MainActivity extends AppCompatActivity {
             // The result will be received in the onReadRemoteRssi callback method
 
             // Schedule the next execution after a delay (adjust as needed)
-            handler.postDelayed(this, 1000);
+            handler.postDelayed(this, 50);
         }
     };
 
@@ -194,6 +199,8 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        //Initialize this at the beginning so that the GattCallback will be ran when needed
+        // Will start running when it detects connection change
         bluetoothGattCallback = new BluetoothGattCallback() {
 
             @Override
@@ -203,10 +210,11 @@ public class MainActivity extends AppCompatActivity {
                 Log.v(TAG, "newState = " + newState);
 
 
+
                 Log.v(TAG, "BluetoothProfile.STATE_CONNECTED = " + BluetoothProfile.STATE_CONNECTED);
 
                 if (newState == BluetoothProfile.STATE_CONNECTED) {
-
+                    mDeviceInfoTv.setText(gatt.getDevice().getName());
 
 
 
@@ -215,7 +223,8 @@ public class MainActivity extends AppCompatActivity {
 
 
 
-                    handler.postDelayed(runnable, 1000);
+
+                    handler.postDelayed(runnable, 0);
 
 
 
@@ -262,6 +271,7 @@ public class MainActivity extends AppCompatActivity {
         mFineBtn = findViewById(R.id.fineBtn);
         mStatusBlueTv = findViewById(R.id.statusBluetoothTv);
         mDeviceInfoTv = findViewById(R.id.deviceInfoTv);
+        mToControlBtn = findViewById(R.id.toControlBtn);
 
 
 
@@ -279,7 +289,13 @@ public class MainActivity extends AppCompatActivity {
             }
         }
 
-
+        //Switch activities button
+        mToControlBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                switchActivities();
+            }
+        });
 
 
 
